@@ -1,12 +1,8 @@
 import { ForecastPoint, StormGlass } from "@src/clients/stormGlass";
+import { BeachePosition } from "@src/models/beach";
 import { InternalError } from "@src/util/erros/internal-error";
 
-export enum BeachePosition{
-    S= 'S',
-    E= 'E',
-    N= 'N',
-    W= 'W'
-}
+
 
 export interface Beache{
     lat: number,
