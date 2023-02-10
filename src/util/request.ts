@@ -1,5 +1,7 @@
 import axios, {AxiosRequestConfig, AxiosResponse, AxiosRequestHeaders, AxiosError} from "axios";
 
+axios.defaults.adapter = 'http'
+
 export interface RequestConfig extends  AxiosRequestConfig{
   headers: AxiosRequestHeaders | any
 }

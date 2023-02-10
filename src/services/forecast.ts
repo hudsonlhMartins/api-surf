@@ -8,8 +8,8 @@ export interface Beache{
     lat: number,
     lng: number,
     name: string,
-    position: BeachePosition,
-    user: string,
+    position: BeachePosition
+    // user: string,
 }
 export interface BeacheForecast extends Omit<Beache, 'user'>, ForecastPoint{} 
 
