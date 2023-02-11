@@ -5,8 +5,8 @@ import { ForecastController } from './controllers/forecast'
 import { Application } from 'express'
 import * as database from '@src/database'
 import { BeachesController } from './controllers/beaches'
-export class SetupServer extends Server {
 
+export class SetupServer extends Server {
     constructor(private port = 3000) {
       super();
     }
@@ -36,7 +36,11 @@ export class SetupServer extends Server {
     private async databaseSetup(): Promise<void> {
       await database.connect();
     }
-  
+    public start (){
+      this.app.listen(this.port, ()=>{
+        console.info(`Server running of port ${this.port}`)
+      })
+    }
     public async close(): Promise<void> {
       await database.close();
     }
