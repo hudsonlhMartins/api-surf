@@ -1,3 +1,4 @@
+import AuthService  from "@src/services/authServices";
 import mongoose from "mongoose";
 
 
@@ -40,5 +41,21 @@ const schema = new mongoose.Schema(
     'already exists in the database.',
     CUSTOM_VALIDATION.DUPLICATED
   );
+
+
+
+
+
+  schema.pre('save', async function ():Promise<void> {
+    if(!this.password || !this.isModified('password')){
+      return
+    }
+    try{
+      const hashedPassword = await AuthService.hashPassword(this.password)
+      this.password = hashedPassword
+    }catch(err){
+      console.error(`Error hasing the password for the  user ${this.name}`)
+    }
+})
 
   export const User = mongoose.model<User>('User', schema)
