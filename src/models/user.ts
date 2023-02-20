@@ -8,6 +8,10 @@ export interface User {
     _id?: string
 }
 
+export enum CUSTOM_VALIDATION{
+  DUPLICATED = 'DUBLICATED',
+}
+
 const schema = new mongoose.Schema(
     {
       name: { type: String, required: true },
@@ -27,6 +31,14 @@ const schema = new mongoose.Schema(
         },
       },
     }
+  );
+  schema.path('email').validate(
+    async (email: string) => {
+      const emailCount = await mongoose.models.User.countDocuments({ email });
+      return !emailCount;
+    },
+    'already exists in the database.',
+    CUSTOM_VALIDATION.DUPLICATED
   );
 
   export const User = mongoose.model<User>('User', schema)
