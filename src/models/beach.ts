@@ -1,4 +1,4 @@
-import mongoose, { Document, Model, model } from "mongoose";
+import mongoose, { Document, Model, model, Schema } from "mongoose";
 
 
 export enum BeachePosition{
@@ -14,6 +14,7 @@ export interface Beach {
     name: string,
     position: BeachePosition,
     _id?: string
+    user: string
 }
 const schema = new mongoose.Schema(
     {
@@ -21,6 +22,8 @@ const schema = new mongoose.Schema(
       lng: { type: Number, required: true },
       name: { type: String, required: true },
       position: { type: String, required: true },
+      // e assim que vimcular um schema a outro
+      user: {type: Schema.Types.ObjectId, ref: 'User', require: true}
     },
     {
       toJSON: {

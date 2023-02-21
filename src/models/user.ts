@@ -42,10 +42,6 @@ const schema = new mongoose.Schema(
     CUSTOM_VALIDATION.DUPLICATED
   );
 
-
-
-
-
   schema.pre('save', async function ():Promise<void> {
     if(!this.password || !this.isModified('password')){
       return

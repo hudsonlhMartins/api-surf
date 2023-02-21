@@ -9,7 +9,7 @@ export interface Beache{
     lng: number,
     name: string,
     position: BeachePosition
-    // user: string,
+    user: string,
 }
 export interface BeacheForecast extends Omit<Beache, 'user'>, ForecastPoint{} 
 
