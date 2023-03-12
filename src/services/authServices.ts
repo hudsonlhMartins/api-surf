@@ -15,6 +15,8 @@ export default class AuthService {
     public static async comparePassword(password: string, hashedPassword:string):Promise<Boolean> {
           return await bcrypt.compare(password, hashedPassword)
     }
+
+    
     public static generateToken(payload:object):String{
         return jwt.sign(payload, config.get('App.auth.key'), {
             expiresIn: config.get('App.auth.tokenExpiresIn'),

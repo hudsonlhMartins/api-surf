@@ -2,11 +2,6 @@ import { CUSTOM_VALIDATION } from "@src/models/user";
 import { Response } from "express";
 import mongoose from "mongoose";
 
-interface errorP{
-    error:{
-        message: string
-    }
-}
 
 export abstract class BaseController {
     protected sendCreatedUpdateErrorResponse(res: Response, error: mongoose.Error.ValidationError | any ):void{

@@ -28,7 +28,7 @@ export class SetupServer extends Server {
       const forecastController = new ForecastController();
       const beachesController = new BeachesController()
       const userController = new UsersController()
-      this.addControllers([forecastController, beachesController,userController]);
+      this.addControllers([forecastController, beachesController, userController]);
     }
   
     public getApp(): Application {
